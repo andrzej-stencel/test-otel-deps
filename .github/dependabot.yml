@@ -1,0 +1,15 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+        otel-dependencies:
+            update-types:
+             - "minor"
+             - "patch"
+    allow:
+      - dependency-name: "go.opentelemetry.io/collector/*"
+      - dependency-name: "github.com/open-telemetry/opentelemetry-collector-contrib/*"
