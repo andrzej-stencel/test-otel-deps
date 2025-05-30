@@ -3,7 +3,7 @@ module github.com/andrzej-stencel/test-otel-deps
 go 1.23.0
 
 require (
-	github.com/google/logger v1.0.0
+	github.com/google/logger v1.1.1
 	go.opentelemetry.io/collector/exporter/debugexporter v0.127.0
 )
 
