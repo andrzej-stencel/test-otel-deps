@@ -2,9 +2,10 @@ module github.com/andrzej-stencel/test-otel-deps
 
 go 1.23.0
 
-toolchain go1.24.1
-
-require go.opentelemetry.io/collector/exporter/debugexporter v0.121.0
+require (
+	github.com/google/logger v1.0.0
+	go.opentelemetry.io/collector/exporter/debugexporter v0.121.0
+)
 
 require (
 	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
