@@ -1,15 +1,44 @@
 ---
 version: 2
+
 updates:
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
       interval: "daily"
-    groups:
-        otel-dependencies:
-            update-types:
-             - "minor"
-             - "patch"
-    allow:
+    # OTel dependencies are updated separately
+    ignore:
+      - dependency-name: "go.opentelemetry.io/collector/*"
+      - dependency-name: "github.com/open-telemetry/opentelemetry-collector-contrib/*"
+  # Same config as for main branch
+  - package-ecosystem: "gomod"
+    target-branch: "8.19"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # OTel dependencies are updated separately
+    ignore:
+      - dependency-name: "go.opentelemetry.io/collector/*"
+      - dependency-name: "github.com/open-telemetry/opentelemetry-collector-contrib/*"
+
+  - package-ecosystem: "gomod"
+    target-branch: "9.0"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "go.opentelemetry.io/collector/*"
+      - dependency-name: "github.com/open-telemetry/opentelemetry-collector-contrib/*"
+  # Same config as for 9.0 branch
+  - package-ecosystem: "gomod"
+    target-branch: "8.18"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
       - dependency-name: "go.opentelemetry.io/collector/*"
       - dependency-name: "github.com/open-telemetry/opentelemetry-collector-contrib/*"
